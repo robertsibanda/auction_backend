@@ -4,9 +4,10 @@ import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
 
-import org.apache.catalina.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import com.nx.auction_backend.models.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
