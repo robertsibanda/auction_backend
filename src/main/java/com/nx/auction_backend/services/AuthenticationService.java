@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.nx.auction_backend.models.AuthenticationResponse;
+import com.nx.auction_backend.models.Role;
 import com.nx.auction_backend.models.User;
 import com.nx.auction_backend.repo.UserRepo;
 
@@ -34,7 +35,7 @@ public class AuthenticationService {
         user.setLastname(request.getLastname());
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(user.getRole());
+        user.setRole(Role.USER);
 
         user = userRepo.save(user);
 
@@ -49,6 +50,8 @@ public class AuthenticationService {
             new UsernamePasswordAuthenticationToken(
                 request.getUsername(), request.getPassword())
         );
+
+        System.out.println("\n\n\nuser details : " + request.getUsername() + " -> " + request.getPassword());
 
         User user = userRepo.findByusername(request.getUsername()).orElseThrow();
 

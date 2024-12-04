@@ -1,10 +1,13 @@
 package com.nx.auction_backend.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.nx.auction_backend.services.UserDetailsImpl;
 
 import lombok.Data;
 
@@ -22,9 +25,12 @@ public class User implements UserDetailsService{
 
     Role role;
 
+    @Autowired
+    UserDetailsImpl userDetailsService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return userDetailsService.loadUserByUsername(username);
     }
 
 }

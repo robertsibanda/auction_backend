@@ -21,6 +21,12 @@ public class AuthenticationController {
         @RequestBody User request
     ) 
     {
+        System.out.println("\n\n\nTrying to register");
+        System.out.println("Username : " + request.getUsername());
+        System.out.println("Password : " + request.getPassword());
+        System.out.println("firstname : " + request.getFirstname());
+        System.out.println("Lastname : " + request.getLastname());
+        System.out.println("Email : " + request.getEmail());
         return ResponseEntity.ok(authenticationService.register(request));
     }
 
@@ -29,6 +35,12 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(
         @RequestBody User request
     ) {
+        System.out.println("\n\n\nTrying to log in ");
+        System.out.println("Username : " + request.getUsername());
+        System.out.println("Password : " + request.getPassword());
+        System.out.println("firstname : " + request.getFirstname());
+        System.out.println("Lastname : " + request.getLastname());
+        System.out.println("Email : " + request.getEmail());
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
     
